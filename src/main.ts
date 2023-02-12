@@ -6,10 +6,10 @@ new Engine({
   canvas: document.querySelector('#canvas') as HTMLCanvasElement,
   experience: Demo,
   info: {
-    twitter: 'https://twitter.com/maya_ndljk',
-    github: 'https://github.com/mayacoda/simple-threejs-typescript-starter',
-    description: 'A simple Three.js + Typescript + Vite starter project',
-    documentTitle: 'Three.js + Typescript + Vite',
-    title: 'A cube on a plane',
+    // twitter: '...',
+    github: 'https://github.com/d3v-null/beam-me-up',
+    description: 'Threejs WebGPU demo using MWA FEE beam via hyperbeam',
+    documentTitle: 'MWA Beam Demo',
+    title: 'MWA Beam Demo',
   },
 })

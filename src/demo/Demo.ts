@@ -1,13 +1,15 @@
 import { Engine } from '../engine/Engine'
 import * as THREE from 'three'
-import { Box } from './Box'
+import { Beam } from './Beam'
 import { Experience } from '../engine/Experience'
 import { Resource } from '../engine/Resources'
 
 export class Demo implements Experience {
   resources: Resource[] = []
 
-  constructor(private engine: Engine) {}
+  constructor(private engine: Engine) {
+    // engine.debug.gui.add(this, 'init');
+  }
 
   init() {
     const plane = new THREE.Mesh(
@@ -27,12 +29,12 @@ export class Demo implements Experience {
 
     this.engine.scene.add(directionalLight)
 
-    const box = new Box()
-    box.castShadow = true
-    box.rotation.y = Math.PI / 4
-    box.position.set(0, 0.5, 0)
+    const sphere = new Beam()
+    sphere.castShadow = true
+    sphere.rotation.y = Math.PI / 4
+    sphere.position.set(0, 0.5, 0)
 
-    this.engine.scene.add(box)
+    this.engine.scene.add(sphere)
   }
 
   resize() {}
