@@ -19,13 +19,14 @@ export class Camera implements GameEntity {
       0.1,
       1000
     )
-    this.instance.position.z = 5
-    this.instance.position.y = 2
+    this.instance.position.z = 2
+    this.instance.position.y = 1
     this.engine.scene.add(this.instance)
   }
 
   private initControls() {
     this.controls = new OrbitControls(this.instance, this.engine.canvas)
+    this.controls.autoRotate = true;
     this.controls.update()
   }
 
