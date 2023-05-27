@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { NRRDLoader } from 'three/examples/jsm/loaders/NRRDLoader'
 import { EventEmitter } from './utilities/EventEmitter'
 
 export type Resource =
@@ -14,12 +15,14 @@ export type Resource =
       path: string[]
     }
 
-type AssetType = 'gltf' | 'texture' | 'cubeTexture'
+type AssetType = 'gltf' | 'texture' | 'cubeTexture' | 'nrrd' | 'json'
 
 type Loaders = {
   gltf: GLTFLoader
   texture: THREE.TextureLoader
   cubeTexture: THREE.CubeTextureLoader
+  nrrd: NRRDLoader
+  json: THREE.FileLoader
 }
 
 export class Resources extends EventEmitter {
@@ -49,7 +52,10 @@ export class Resources extends EventEmitter {
       gltf: new GLTFLoader(this.loadingManager),
       texture: new THREE.TextureLoader(this.loadingManager),
       cubeTexture: new THREE.CubeTextureLoader(this.loadingManager),
+      nrrd: new NRRDLoader(this.loadingManager),
+      json: new THREE.FileLoader(this.loadingManager),
     }
+    this.loaders.json.setResponseType('json')
   }
 
   getItem(name: string) {
@@ -87,6 +93,20 @@ export class Resources extends EventEmitter {
             (file) => (this.items[resource.name] = file)
           )
           break
+        case 'nrrd':
+          this.loaders.nrrd.load(
+            resource.path,
+            (file) => (this.items[resource.name] = file)
+          )
+          break
+        case 'json':
+          this.loaders.json.load(
+            resource.path,
+            (file) => (this.items[resource.name] = file)
+          )
+          break
+        default:
+          throw new Error(`Unknown resource type for ${resource}`)
       }
     }
   }

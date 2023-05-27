@@ -7,6 +7,8 @@ import { Resource } from '../engine/Resources'
 export class Demo implements Experience {
   resources: Resource[] = []
   currTex: number = 0;
+  static description = 'Threejs WebGPU demo using MWA FEE beam via hyperbeam'
+  static title = 'MWA Beam Demo'
   textureNames = [
     'p00_f049920000',
     'p00_f110080000',
@@ -253,15 +255,6 @@ export class Demo implements Experience {
   }
 
   init() {
-    // const plane = new THREE.Mesh(
-    //   new THREE.PlaneGeometry(10, 10),
-    //   new THREE.MeshStandardMaterial({ color: 0xffffff })
-    // )
-
-    // plane.rotation.x = -Math.PI / 2
-    // plane.receiveShadow = true
-
-    // this.engine.scene.add(plane)
     this.engine.scene.add(new THREE.AmbientLight(0xffffff, 0.5))
 
     let directionalLight = new THREE.DirectionalLight(0xffffff, 1)

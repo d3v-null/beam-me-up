@@ -1,6 +1,9 @@
 import './style.scss'
 import { Engine } from './engine/Engine'
-import { Demo } from './demo/Demo'
+// import { Demo } from './beam/Demo'
+// import { Demo } from './grid/Demo'
+// import { Demo } from './sdc3/Demo'
+import { Demo } from './calvin/Demo'
 
 new Engine({
   canvas: document.querySelector('#canvas') as HTMLCanvasElement,
@@ -8,8 +11,8 @@ new Engine({
   info: {
     // twitter: '...',
     github: 'https://github.com/d3v-null/beam-me-up',
-    description: 'Threejs WebGPU demo using MWA FEE beam via hyperbeam',
-    documentTitle: 'MWA Beam Demo',
-    title: 'MWA Beam Demo',
+    description: Demo.description || '',
+    title: Demo.title || '',
+    documentTitle: Demo.title || 'Demo',
   },
 })
