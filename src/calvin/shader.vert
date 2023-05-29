@@ -10,5 +10,5 @@ void main() {
     vec2 cplx = vec2(texColor.r, texColor.g) * 2. - 1.;
     vec4 newPos = vec4(position.x + cplx.x, position.y + (chan_idx / 24.), position.z + cplx.y, 1.);
     gl_Position = projectionMatrix * modelViewMatrix * newPos;
-    gl_PointSize = 10.0;
+    gl_PointSize = 10.0 * texColor.a;
 }
